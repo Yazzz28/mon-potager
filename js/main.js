@@ -10,6 +10,7 @@ import { renderLibrary } from './renders/library.js';
 import { closePlantDetailModal } from './renders/detail.js';
 import { exportBackup, importBackup } from './backup.js';
 import { showToast } from './toast.js';
+import { initTerrain } from './renders/terrain.js';
 
 async function init() {
   // Load DB
@@ -24,6 +25,9 @@ async function init() {
 
   // Load user plants
   App.plants = Storage.load();
+
+  // Load terrain
+  initTerrain();
 
   // Init date
   document.getElementById('today-date').textContent =

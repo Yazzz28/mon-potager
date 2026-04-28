@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mon Potager 🌱</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/design-tokens.css" />
+  <link rel="stylesheet" href="css/terrain.css" />
 </head>
 <body>
 
@@ -38,6 +40,10 @@
       <button class="nav-item" data-page="stats">
         <span class="nav-icon">📊</span>
         <span>Statistiques</span>
+      </button>
+      <button class="nav-item" data-page="terrain">
+        <span class="nav-icon">🗺️</span>
+        <span>Mon Terrain</span>
       </button>
     </nav>
     <div class="sidebar-footer">
@@ -360,6 +366,11 @@
         <div class="section-card-header"><h2>🏆 Historique des récoltes</h2></div>
         <div id="stats-harvest-history" class="harvest-history"></div>
       </div>
+    </section>
+
+    <!-- TERRAIN -->
+    <section class="page" id="page-terrain">
+      <!-- Dynamically rendered by renderTerrain() -->
     </section>
 
   </main>

@@ -1,0 +1,411 @@
+/* ============================================================
+   TERRAIN — styles de la page "Mon Terrain"
+   ============================================================ */
+
+/* ---- Tabs ---- */
+.tr-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tr-tab {
+  padding: 10px 22px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s, border-color 0.2s;
+}
+.tr-tab:hover  { color: var(--color-primary); }
+.tr-tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+
+/* ---- Toolbar ---- */
+.tr-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tr-tool-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tr-tool-group + .tr-tool-group {
+  padding-left: 10px;
+  border-left: 1px solid var(--border-color);
+}
+.tr-tool-group--right { margin-left: auto; }
+
+.tr-tool-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.tr-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: #F5F5F5;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.tr-tool-btn:hover  { background: #E8F5E9; border-color: var(--color-primary-light); }
+.tr-tool-btn.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary-dark); }
+
+.tr-num-input {
+  width: 48px;
+  padding: 5px 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  font-family: inherit;
+}
+.tr-num-input:focus { outline: none; border-color: var(--color-primary); }
+
+/* ---- Layout ---- */
+.tr-panel { }
+.tr-panel.hidden { display: none; }
+
+.tr-main {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ---- Grid wrapper ---- */
+.tr-grid-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  overflow: auto;
+}
+
+/* ---- Terrain grid ---- */
+.tr-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--tr-cols, 10), var(--tr-cell-sz, 56px));
+  gap: var(--tr-gap, 3px);
+  user-select: none;
+}
+
+/* ---- Cells ---- */
+.tr-cell {
+  width: var(--tr-cell-sz, 56px);
+  height: var(--tr-cell-sz, 56px);
+  border-radius: var(--tr-radius-cell, 6px);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: transform 0.1s, box-shadow 0.1s, border-color 0.1s;
+}
+.tr-cell:hover { transform: scale(1.06); z-index: 2; }
+
+.tr-cell--empty {
+  background: var(--tr-empty-bg);
+  border-color: var(--tr-empty-border);
+}
+.tr-cell--soil {
+  background: var(--tr-soil-bg);
+  border-color: var(--tr-soil-border);
+}
+.tr-cell--path {
+  background: var(--tr-path-bg);
+  border-color: var(--tr-path-border);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.15) 0px,
+    rgba(255,255,255,0.15) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
+
+/* Selection & drag states */
+.tr-selected {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+.tr-drop-hover {
+  border-color: var(--color-primary-light) !important;
+  background: #A5D6A7 !important;
+  transform: scale(1.08);
+}
+
+/* Cell content */
+.tr-cell-label {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,0.65);
+  pointer-events: none;
+}
+.tr-cell--empty .tr-cell-label,
+.tr-cell--path  .tr-cell-label { color: rgba(0,0,0,0.35); }
+
+.tr-cell-emoji {
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35));
+  pointer-events: none;
+}
+.tr-cell-stage-icon {
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+/* ---- Timeline stage colors (applied on tr-cell--soil) ---- */
+.tr-stage-semis_interieur  { background: var(--stage-bg-semis) !important;         border-color: var(--stage-border-semis) !important; }
+.tr-stage-semis_exterieur  { background: var(--stage-bg-semis) !important;         border-color: var(--stage-border-semis) !important; }
+.tr-stage-germination      { background: var(--stage-bg-germination) !important;   border-color: var(--stage-border-germination) !important; }
+.tr-stage-repiquage        { background: var(--stage-bg-repiquage) !important;     border-color: var(--stage-border-repiquage) !important; }
+.tr-stage-croissance       { background: var(--stage-bg-croissance) !important;    border-color: var(--stage-border-croissance) !important; }
+.tr-stage-floraison        { background: var(--stage-bg-floraison) !important;     border-color: var(--stage-border-floraison) !important; }
+.tr-stage-fructification   { background: var(--stage-bg-fructification) !important; border-color: var(--stage-border-fructification) !important; }
+.tr-stage-recolte          { background: var(--stage-bg-recolte) !important;       border-color: var(--stage-border-recolte) !important; }
+
+/* On timeline cells, emoji needs darker text */
+.tr-stage-semis_interieur  .tr-cell-label,
+.tr-stage-semis_exterieur  .tr-cell-label,
+.tr-stage-germination      .tr-cell-label,
+.tr-stage-repiquage        .tr-cell-label,
+.tr-stage-croissance       .tr-cell-label,
+.tr-stage-floraison        .tr-cell-label,
+.tr-stage-fructification   .tr-cell-label,
+.tr-stage-recolte          .tr-cell-label { color: rgba(0,0,0,0.4); }
+
+/* ---- Right panel ---- */
+.tr-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Cell detail ---- */
+.tr-cell-detail {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+.tr-cell-detail.hidden { display: none; }
+
+.tr-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.tr-detail-emoji { font-size: 30px; }
+.tr-detail-head strong { display: block; font-size: 14px; }
+.tr-detail-head small   { color: var(--text-secondary); font-size: 12px; }
+
+.tr-detail-hint {
+  font-size: 13px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.tr-detail-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tr-date-picker {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tr-date-picker label { font-size: 13px; color: var(--text-secondary); }
+.tr-date-picker input { padding: 5px 8px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13px; }
+.tr-date-picker input:focus { outline: none; border-color: var(--color-primary); }
+
+/* ---- Palette ---- */
+.tr-palette {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tr-palette-header {
+  margin-bottom: 10px;
+}
+.tr-palette-header h3 { font-size: 14px; font-weight: 600; color: var(--color-primary-dark); margin-bottom: 8px; }
+
+.tr-palette-search {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+}
+.tr-palette-search:focus { outline: none; border-color: var(--color-primary); }
+
+.tr-palette-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.tr-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  cursor: grab;
+  border: 1px solid transparent;
+  font-size: 13px;
+  transition: background 0.12s, border-color 0.12s;
+}
+.tr-palette-item:hover           { background: #F1F8E9; border-color: #C8E6C9; }
+.tr-palette-item.tr-dragging     { opacity: 0.45; }
+.tr-palette-item.tr-palette-selected {
+  background: #E8F5E9;
+  border-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+.tr-palette-emoji { font-size: 18px; }
+
+/* ---- Timeline ---- */
+.tr-tl-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.tr-tl-title {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.tr-tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.tr-legend-chip {
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.tr-legend-chip.tr-stage-semis_interieur  { background: var(--stage-bg-semis);         color: var(--stage-color-semis);         border-color: var(--stage-border-semis); }
+.tr-legend-chip.tr-stage-germination      { background: var(--stage-bg-germination);   color: var(--stage-color-germination);   border-color: var(--stage-border-germination); }
+.tr-legend-chip.tr-stage-repiquage        { background: var(--stage-bg-repiquage);     color: var(--stage-color-repiquage);     border-color: var(--stage-border-repiquage); }
+.tr-legend-chip.tr-stage-croissance       { background: var(--stage-bg-croissance);    color: var(--stage-color-croissance);    border-color: var(--stage-border-croissance); }
+.tr-legend-chip.tr-stage-floraison        { background: var(--stage-bg-floraison);     color: var(--stage-color-floraison);     border-color: var(--stage-border-floraison); }
+.tr-legend-chip.tr-stage-fructification   { background: var(--stage-bg-fructification); color: var(--stage-color-fructification); border-color: var(--stage-border-fructification); }
+.tr-legend-chip.tr-stage-recolte          { background: var(--stage-bg-recolte);       color: var(--stage-color-recolte);       border-color: var(--stage-border-recolte); }
+
+/* Month plants list */
+.tr-tl-plants {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tr-month-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+}
+.tr-month-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.tr-month-items { display: flex; flex-direction: column; gap: 5px; }
+.tr-month-item  {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+}
+.tr-cell-ref {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-light);
+  background: #F5F5F5;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .tr-main { grid-template-columns: 1fr 240px; }
+}
+
+@media (max-width: 900px) {
+  .tr-main { grid-template-columns: 1fr; }
+  .tr-side  { order: -1; }
+  .tr-palette-list { max-height: 160px; }
+  :root { --tr-cell-sz: 46px; }
+}
+
+@media (max-width: 600px) {
+  :root { --tr-cell-sz: 38px; }
+  .tr-tl-nav { flex-wrap: wrap; justify-content: center; }
+  .tr-tl-title { flex: 1 0 100%; text-align: center; }
+}

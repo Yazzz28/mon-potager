@@ -1,0 +1,51 @@
+/* ============================================================
+   DESIGN TOKENS — variables réutilisables pour les nouvelles features
+   Complète style.css sans le modifier.
+   ============================================================ */
+:root {
+  /* Stades : couleurs sémantiques */
+  --stage-color-semis:         #1565C0;
+  --stage-bg-semis:            #E3F2FD;
+  --stage-border-semis:        #90CAF9;
+
+  --stage-color-germination:   #2E7D32;
+  --stage-bg-germination:      #C8E6C9;
+  --stage-border-germination:  #81C784;
+
+  --stage-color-repiquage:     #1976D2;
+  --stage-bg-repiquage:        #BBDEFB;
+  --stage-border-repiquage:    #64B5F6;
+
+  --stage-color-croissance:    #1B5E20;
+  --stage-bg-croissance:       #A5D6A7;
+  --stage-border-croissance:   #4CAF50;
+
+  --stage-color-floraison:     #E65100;
+  --stage-bg-floraison:        #FFE0B2;
+  --stage-border-floraison:    #FFAB40;
+
+  --stage-color-fructification: #BF360C;
+  --stage-bg-fructification:   #FFCCBC;
+  --stage-border-fructification: #FF7043;
+
+  --stage-color-recolte:       #F57F17;
+  --stage-bg-recolte:          #FFF8E1;
+  --stage-border-recolte:      #FFD54F;
+
+  --stage-color-termine:       #616161;
+  --stage-bg-termine:          #F5F5F5;
+  --stage-border-termine:      #E0E0E0;
+
+  /* Terrain editor */
+  --tr-cell-sz:                56px;
+  --tr-soil-bg:                #8D6E63;
+  --tr-soil-border:            #6D4C41;
+  --tr-path-bg:                #B0BEC5;
+  --tr-path-border:            #90A4AE;
+  --tr-empty-bg:               #ECEFF1;
+  --tr-empty-border:           #CFD8DC;
+
+  /* Misc */
+  --tr-gap:                    3px;
+  --tr-radius-cell:            6px;
+}

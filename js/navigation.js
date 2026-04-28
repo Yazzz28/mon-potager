@@ -5,6 +5,7 @@ import { renderCalendar } from './renders/calendar.js';
 import { renderLibrary } from './renders/library.js';
 import { renderStats } from './renders/stats.js';
 import { resetAddForm } from './renders/form.js';
+import { renderTerrain } from './renders/terrain.js';
 
 export function navigateTo(page) {
   App.currentPage = page;
@@ -19,12 +20,13 @@ export function navigateTo(page) {
   if (navEl) navEl.classList.add('active');
 
   const titles = {
-    dashboard: 'Tableau de bord',
-    monpotager: 'Mon Potager',
-    ajouter: 'Ajouter une plante',
-    calendrier: 'Calendrier',
-    bibliotheque: 'Bibliothèque',
-    stats: 'Statistiques'
+    dashboard:   'Tableau de bord',
+    monpotager:  'Mon Potager',
+    ajouter:     'Ajouter une plante',
+    calendrier:  'Calendrier',
+    bibliotheque:'Bibliothèque',
+    stats:       'Statistiques',
+    terrain:     'Mon Terrain',
   };
   document.getElementById('topbar-title').textContent = titles[page] || page;
 
@@ -35,6 +37,7 @@ export function navigateTo(page) {
   if (page === 'bibliotheque') renderLibrary();
   if (page === 'stats') renderStats();
   if (page === 'ajouter') resetAddForm();
+  if (page === 'terrain') renderTerrain();
 
   // Close sidebar on mobile
   if (window.innerWidth < 900) {
