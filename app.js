@@ -1229,6 +1229,13 @@ async function init() {
   libSearch.addEventListener('input', Utils.debounce(() => renderLibrary(libSearch.value), 200));
   document.getElementById('lib-filter-type').addEventListener('change', () => renderLibrary(libSearch.value));
 
+  // Backup
+  document.getElementById('export-btn').addEventListener('click', exportBackup);
+  document.getElementById('import-input').addEventListener('change', (e) => {
+    importBackup(e.target.files[0]);
+    e.target.value = ''; // reset so same file can be re-imported
+  });
+
   // Modals
   document.getElementById('modal-close').addEventListener('click', () => {
     document.getElementById('plant-modal').classList.add('hidden');
@@ -1241,6 +1248,48 @@ async function init() {
 
   // Initial render
   navigateTo('dashboard');
+}
+
+// ============================================================
+// BACKUP — EXPORT / IMPORT
+// ============================================================
+function exportBackup() {
+  const data = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    plants: App.plants
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const date = Utils.toInputDate(new Date());
+  a.href = url;
+  a.download = `mon-potager-backup-${date}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Sauvegarde téléchargée ✅', 'success');
+}
+
+function importBackup(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      const plants = Array.isArray(data) ? data : data.plants;
+      if (!Array.isArray(plants)) throw new Error('Format invalide');
+      const count = plants.length;
+      if (!confirm(`Importer ${count} plante(s) ? Cela remplacera vos données actuelles.`)) return;
+      App.plants = plants;
+      Storage.save(App.plants);
+      showToast(`${count} plante(s) importée(s) ✅`, 'success');
+      if (App.currentPage === 'dashboard') renderDashboard();
+      if (App.currentPage === 'monpotager') renderMyGarden();
+    } catch (err) {
+      showToast('Fichier invalide ou corrompu ❌', 'error');
+    }
+  };
+  reader.readAsText(file);
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -124,6 +124,37 @@ body {
   gap: 4px;
   font-size: 13px;
   color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+
+.backup-section {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.backup-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--border-radius-sm);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+  font-family: inherit;
+  text-align: center;
+}
+
+.backup-btn:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
 }
 
 /* ===========================
