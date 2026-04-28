@@ -1,0 +1,16 @@
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main-content { margin-left: 0; }
+  .hamburger { display: block; }
+  .stats-detail-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 16px 12px 40px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .plants-grid { grid-template-columns: 1fr; }
+  .library-grid { grid-template-columns: repeat(2, 1fr); }
+  .topbar-right span { display: none; }
+}
