@@ -783,6 +783,706 @@
       "diseases": ["mildiou", "oïdium"],
       "tips": "Encore plus productive que la tomate classique. Peut se cultiver en pot de 20L.",
       "nutrition": { "calories_per_100g": 18, "vitamins": ["C", "K", "A"], "minerals": ["potassium"] }
+    },
+    {
+      "id": "melon",
+      "name": "Melon",
+      "emoji": "🍈",
+      "family": "Cucurbitacées",
+      "type": "légume-fruit",
+      "description": "Fruit charnu et sucré de l'été, demande beaucoup de chaleur et de soleil.",
+      "varieties": ["Charentais", "Galia", "Honeydew", "Cantaloup", "Ogen"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "abondant",
+        "soil": "riche, humifère, pH 6-7",
+        "space_cm": 150,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 6, "max": 10 },
+      "sowing": {
+        "indoor": { "months": [4, 5], "notes": "En godets individuels, 22-25°C" },
+        "outdoor": { "months": [5, 6], "notes": "Sol réchauffé >18°C" }
+      },
+      "transplant": { "months": [5, 6], "notes": "Après les gelées, exposition chaude et ensoleillée" },
+      "harvest": { "months": [8, 9], "days_from_transplant": { "min": 80, "max": 110 } },
+      "companions": ["mais", "haricot_vert", "radis"],
+      "enemies": ["pomme_de_terre", "concombre"],
+      "diseases": ["oïdium", "mildiou", "fusariose"],
+      "tips": "Placer une ardoise sous le fruit pour éviter la pourriture. Récolter quand le pédoncule se fissure et que le parfum est présent.",
+      "nutrition": { "calories_per_100g": 34, "vitamins": ["C", "A", "B6"], "minerals": ["potassium"] }
+    },
+    {
+      "id": "pasteque",
+      "name": "Pastèque",
+      "emoji": "🍉",
+      "family": "Cucurbitacées",
+      "type": "légume-fruit",
+      "description": "Grand fruit rafraîchissant composé à 92% d'eau, idéal pour les régions chaudes.",
+      "varieties": ["Sugar Baby", "Crimson Sweet", "Black Diamond", "Charleston Gray"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "abondant",
+        "soil": "léger, sableux, humifère, pH 6-7",
+        "space_cm": 200,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": { "months": [4, 5], "notes": "En godets individuels, 25°C minimum" },
+        "outdoor": null
+      },
+      "transplant": { "months": [5, 6], "notes": "Uniquement en région chaude, sol >20°C" },
+      "harvest": { "months": [8, 9], "days_from_transplant": { "min": 90, "max": 120 } },
+      "companions": ["mais", "haricot_vert", "radis"],
+      "enemies": ["pomme_de_terre"],
+      "diseases": ["anthracnose", "oïdium", "mildiou"],
+      "tips": "Choisir des petites variétés en région froide. Pincer à 2-3 fruits noués pour de belles pastèques.",
+      "nutrition": { "calories_per_100g": 30, "vitamins": ["C", "A", "B6"], "minerals": ["potassium"] }
+    },
+    {
+      "id": "piment",
+      "name": "Piment",
+      "emoji": "🌶️",
+      "family": "Solanacées",
+      "type": "légume-fruit",
+      "description": "Parent du poivron, de doux à très piquant selon la variété. Aime la chaleur.",
+      "varieties": ["Jalapeño", "Cayenne", "Habanero", "Doux d'Espagne", "Espelette"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier",
+        "soil": "riche, bien drainé, pH 6-7",
+        "space_cm": 45,
+        "depth_cm": 35
+      },
+      "germination_days": { "min": 14, "max": 21 },
+      "sowing": {
+        "indoor": { "months": [2, 3], "notes": "Chaleur indispensable 22-25°C, germination parfois longue" },
+        "outdoor": null
+      },
+      "transplant": { "months": [5, 6], "notes": "Après les gelées, exposition bien chaude" },
+      "harvest": { "months": [8, 9, 10], "days_from_transplant": { "min": 70, "max": 100 } },
+      "companions": ["basilic", "poivron", "tomate"],
+      "enemies": ["fenouil"],
+      "diseases": ["mildiou", "pucerons", "araignée_rouge"],
+      "tips": "Plus le sol est sec et chaud, plus le piquant est intense. Peut se cultiver en pot.",
+      "nutrition": { "calories_per_100g": 40, "vitamins": ["C", "A", "B6"], "minerals": ["potassium"] }
+    },
+    {
+      "id": "chou_fleur",
+      "name": "Chou-fleur",
+      "emoji": "🥦",
+      "family": "Brassicacées",
+      "type": "légume-fleur",
+      "description": "Légume à pomme blanche, cousin du brocoli, aime le froid et l'humidité.",
+      "varieties": ["Boule de neige", "Erfurt nain", "Romanesco", "Violetto di Sicilia"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier et abondant",
+        "soil": "riche, compact, pH 6.5-7.5",
+        "space_cm": 60,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": { "months": [3, 4, 5, 6], "notes": "En godets, repiquer après 4-5 semaines" },
+        "outdoor": { "months": [5, 6, 7], "notes": "En pépinière" }
+      },
+      "transplant": { "months": [6, 7, 8], "notes": "Arrosage copieux, ne jamais laisser sécher" },
+      "harvest": { "months": [9, 10, 11, 12], "days_from_transplant": { "min": 70, "max": 100 } },
+      "companions": ["laitue", "celeri", "ail", "thym"],
+      "enemies": ["tomate", "fraisier"],
+      "diseases": ["hernie_du_chou", "pucerons_cendrés", "chenilles"],
+      "tips": "Ramener les feuilles sur la pomme pour la blanchir et la protéger du soleil. Récolter avant que les bouquets se desserrent.",
+      "nutrition": { "calories_per_100g": 25, "vitamins": ["C", "K", "B9"], "minerals": ["calcium", "potassium"] }
+    },
+    {
+      "id": "chou",
+      "name": "Chou vert / Chou pommé",
+      "emoji": "🥬",
+      "family": "Brassicacées",
+      "type": "feuille",
+      "description": "Légume robuste et très résistant au froid, excellent légume d'hiver.",
+      "varieties": ["Cœur de bœuf", "Chou de Milan", "Chou rouge", "Chou de Bruxelles", "Chou de Savoie"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier",
+        "soil": "riche, compact, pH 6.5-7.5",
+        "space_cm": 50,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": { "months": [3, 4, 5], "notes": "En godets puis repiquage" },
+        "outdoor": { "months": [5, 6], "notes": "En pépinière, protéger des altises" }
+      },
+      "transplant": { "months": [5, 6, 7], "notes": "Planter profond, butter régulièrement" },
+      "harvest": { "months": [9, 10, 11, 12, 1, 2], "days_from_transplant": { "min": 90, "max": 150 } },
+      "companions": ["celeri", "ail", "thym", "romarin"],
+      "enemies": ["tomate", "haricot_vert", "fraisier"],
+      "diseases": ["hernie_du_chou", "pucerons_cendrés", "altise"],
+      "tips": "Protéger les jeunes plants des altises avec un voile. Excellente résistance au gel jusqu'à -10°C.",
+      "nutrition": { "calories_per_100g": 25, "vitamins": ["C", "K", "B9"], "minerals": ["calcium", "potassium"] }
+    },
+    {
+      "id": "navet",
+      "name": "Navet",
+      "emoji": "🌱",
+      "family": "Brassicacées",
+      "type": "légume-racine",
+      "description": "Racine ronde à saveur douce et légèrement piquante, idéale en potage et ragoûts.",
+      "varieties": ["Boule d'or", "De Nancy", "Noir long d'hiver", "Snowball"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "léger, profond, pH 6-7",
+        "space_cm": 15,
+        "depth_cm": 20
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [3, 4, 5, 7, 8], "notes": "En place directement, éclaircir à 10 cm" }
+      },
+      "transplant": null,
+      "harvest": { "months": [5, 6, 9, 10, 11], "days_from_transplant": { "min": 45, "max": 70 } },
+      "companions": ["pois", "laitue", "épinard"],
+      "enemies": ["fenouil"],
+      "diseases": ["hernie_du_chou", "altise", "pucerons"],
+      "tips": "Récolter jeune (5-8 cm) pour une saveur douce. Les fanes sont aussi comestibles.",
+      "nutrition": { "calories_per_100g": 28, "vitamins": ["C", "B6"], "minerals": ["potassium", "calcium"] }
+    },
+    {
+      "id": "panais",
+      "name": "Panais",
+      "emoji": "🥕",
+      "family": "Apiacées",
+      "type": "légume-racine",
+      "description": "Racine blanche à saveur douce et légèrement sucrée. Parfait légume d'hiver.",
+      "varieties": ["Hollow Crown", "The Student", "Tender and True", "Gladiator"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "modéré",
+        "soil": "léger, profond, sans cailloux, pH 6-7",
+        "space_cm": 10,
+        "depth_cm": 35
+      },
+      "germination_days": { "min": 14, "max": 28 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [3, 4, 5], "notes": "En place, germination lente, garder humide" }
+      },
+      "transplant": null,
+      "harvest": { "months": [10, 11, 12, 1, 2, 3], "days_from_transplant": { "min": 100, "max": 130 } },
+      "companions": ["poireau", "carotte", "persil"],
+      "enemies": ["celeri", "fenouil"],
+      "diseases": ["mouche_de_la_carotte", "septoriose"],
+      "tips": "Le froid améliore la saveur en convertissant l'amidon en sucre. Peut hiverner en terre.",
+      "nutrition": { "calories_per_100g": 75, "vitamins": ["C", "B9", "K"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "fenouil",
+      "name": "Fenouil",
+      "emoji": "🌿",
+      "family": "Apiacées",
+      "type": "légume-tige",
+      "description": "Légume au goût anisé, le bulbe, les feuilles et les graines sont comestibles.",
+      "varieties": ["Florence", "Zefa Fino", "Selma Fino", "Romanesco"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier",
+        "soil": "léger, bien drainé, pH 6-7",
+        "space_cm": 30,
+        "depth_cm": 25
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": { "months": [3, 4], "notes": "En godets, attention à la transplantation" },
+        "outdoor": { "months": [4, 5, 6, 7], "notes": "En place directement, moins de risque de montée" }
+      },
+      "transplant": { "months": [5, 6], "notes": "Délicat à repiquer, préférer semis direct" },
+      "harvest": { "months": [7, 8, 9, 10], "days_from_transplant": { "min": 70, "max": 90 } },
+      "companions": ["coriandre", "aneth"],
+      "enemies": ["tomate", "haricot_vert", "carotte", "poivron", "courgette"],
+      "diseases": ["pucerons", "mildiou"],
+      "tips": "Butter le bulbe pour le blanchir. Planter isolément car il inhibe la croissance de nombreux légumes.",
+      "nutrition": { "calories_per_100g": 31, "vitamins": ["C", "B9", "K"], "minerals": ["potassium", "calcium"] }
+    },
+    {
+      "id": "echalote",
+      "name": "Échalote",
+      "emoji": "🧅",
+      "family": "Alliacées",
+      "type": "bulbe",
+      "description": "Condiment délicat à saveur plus fine que l'oignon, se multiplie par caïeux.",
+      "varieties": ["Grise de la Drôme", "Cuisse de Poulet", "Longor", "Ambition"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "modéré",
+        "soil": "léger, bien drainé, pH 6-7",
+        "space_cm": 15,
+        "depth_cm": 5
+      },
+      "germination_days": { "min": 10, "max": 21 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [2, 3, 10, 11], "notes": "Planter les caïeux à 5 cm de profondeur" }
+      },
+      "transplant": null,
+      "harvest": { "months": [6, 7, 8], "days_from_transplant": { "min": 90, "max": 120 } },
+      "companions": ["carotte", "betterave", "tomate", "laitue"],
+      "enemies": ["haricot_vert", "pois"],
+      "diseases": ["mildiou_de_l_oignon", "botrytis", "rouille"],
+      "tips": "Planter en automne ou début mars. Laisser sécher les bulbes 2 semaines avant stockage.",
+      "nutrition": { "calories_per_100g": 72, "vitamins": ["C", "B6", "B9"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "asperge",
+      "name": "Asperge",
+      "emoji": "🌿",
+      "family": "Asparagacées",
+      "type": "légume-tige",
+      "description": "Légume vivace de longue durée (15-20 ans), récolte seulement dès la 3e année.",
+      "varieties": ["Gijnlim", "Darbonne", "Thielim", "Jersey Giant"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "modéré",
+        "soil": "léger, sableux, bien drainé, pH 7-7.5",
+        "space_cm": 40,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 21, "max": 42 },
+      "sowing": {
+        "indoor": { "months": [2, 3, 4], "notes": "Par graines ou mieux par griffes (plants racines)" },
+        "outdoor": null
+      },
+      "transplant": { "months": [3, 4], "notes": "Planter les griffes en couronne à 30 cm de profondeur" },
+      "harvest": { "months": [4, 5, 6], "days_from_transplant": { "min": 730, "max": 1095 } },
+      "companions": ["tomate", "persil", "basilic"],
+      "enemies": ["ail", "oignon"],
+      "diseases": ["rouille_de_l_asperge", "fusariose"],
+      "tips": "Patienter 2-3 ans avant de récolter. Ne couper que sur 3-4 semaines les premières années pour laisser la plante s'établir.",
+      "nutrition": { "calories_per_100g": 20, "vitamins": ["K", "B9", "C"], "minerals": ["potassium", "fer"] }
+    },
+    {
+      "id": "artichaut",
+      "name": "Artichaut",
+      "emoji": "🌸",
+      "family": "Astéracées",
+      "type": "légume-fleur",
+      "description": "Grand légume vivace méditerranéen, on consomme le capitule avant floraison.",
+      "varieties": ["Camus de Bretagne", "Violet de Provence", "Castel", "Imperial Star"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "abondant",
+        "soil": "profond, riche, bien drainé, pH 6.5-7.5",
+        "space_cm": 100,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 14, "max": 21 },
+      "sowing": {
+        "indoor": { "months": [2, 3, 4], "notes": "En godets puis repiquage" },
+        "outdoor": null
+      },
+      "transplant": { "months": [4, 5], "notes": "Exposition chaude, protéger le premier hiver" },
+      "harvest": { "months": [6, 7, 8, 9], "days_from_transplant": { "min": 120, "max": 180 } },
+      "companions": ["chou", "tomate", "haricot_vert"],
+      "enemies": [],
+      "diseases": ["pucerons_noirs", "mildiou"],
+      "tips": "Couper les têtes avec un peu de tige. Les œilletons (rejets) permettent de multiplier la plante.",
+      "nutrition": { "calories_per_100g": 47, "vitamins": ["C", "K", "B9"], "minerals": ["potassium", "magnésium"] }
+    },
+    {
+      "id": "rhubarbe",
+      "name": "Rhubarbe",
+      "emoji": "🌿",
+      "family": "Polygonacées",
+      "type": "légume-tige",
+      "description": "Plante vivace robuste, seules les tiges sont comestibles (feuilles toxiques).",
+      "varieties": ["Victoria", "Frambozen Rood", "Champagne", "Timperley Early"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "profond, humifère, pH 6-7",
+        "space_cm": 100,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 14, "max": 28 },
+      "sowing": {
+        "indoor": { "months": [2, 3, 4], "notes": "Ou mieux par division de souche au printemps/automne" },
+        "outdoor": null
+      },
+      "transplant": { "months": [3, 4, 10, 11], "notes": "Planter les éclats de souche avec un œil visible" },
+      "harvest": { "months": [4, 5, 6, 7], "days_from_transplant": { "min": 365, "max": 730 } },
+      "companions": ["chou", "fraisier"],
+      "enemies": [],
+      "diseases": ["pourriture_de_la_couronne"],
+      "tips": "Ne jamais consommer les feuilles (toxiques). La première année, ne pas récolter pour laisser la plante s'installer.",
+      "nutrition": { "calories_per_100g": 21, "vitamins": ["C", "K"], "minerals": ["potassium", "calcium"] }
+    },
+    {
+      "id": "blette",
+      "name": "Blette / Poirée",
+      "emoji": "🥬",
+      "family": "Chénopodiacées",
+      "type": "feuille",
+      "description": "Proche de la betterave, feuilles larges et côtes colorées comestibles. Très productive.",
+      "varieties": ["Verte à couper", "Fordhoook Giant", "Bright Lights", "Rhubarbe"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "riche, frais, pH 6.5-7.5",
+        "space_cm": 30,
+        "depth_cm": 20
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [4, 5, 6, 7], "notes": "En place, éclaircir à 20 cm" }
+      },
+      "transplant": null,
+      "harvest": { "months": [7, 8, 9, 10, 11], "days_from_transplant": { "min": 50, "max": 70 } },
+      "companions": ["chou", "laitue", "oignon"],
+      "enemies": [],
+      "diseases": ["cercosporiose", "mildiou"],
+      "tips": "Couper les feuilles extérieures en laissant le cœur. Productivité continue jusqu'aux gelées.",
+      "nutrition": { "calories_per_100g": 19, "vitamins": ["K", "A", "C"], "minerals": ["potassium", "magnésium", "fer"] }
+    },
+    {
+      "id": "mache",
+      "name": "Mâche",
+      "emoji": "🌿",
+      "family": "Valérianacées",
+      "type": "feuille",
+      "description": "Salade d'hiver par excellence, résistante au froid, saveur douce et noisette.",
+      "varieties": ["Vit", "Coquille de Louviers", "Cavallo", "Baron"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "modéré",
+        "soil": "léger, bien drainé, pH 6-7",
+        "space_cm": 10,
+        "depth_cm": 10
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [8, 9, 10], "notes": "Semis dès la fin de l'été pour récolte automnale-hivernale" }
+      },
+      "transplant": null,
+      "harvest": { "months": [10, 11, 12, 1, 2, 3], "days_from_transplant": { "min": 50, "max": 70 } },
+      "companions": ["radis", "épinard", "carotte"],
+      "enemies": [],
+      "diseases": ["mildiou", "limaces"],
+      "tips": "Résiste à la neige et au gel. Tasser légèrement le sol après semis. Idéale après une culture d'été.",
+      "nutrition": { "calories_per_100g": 21, "vitamins": ["C", "B6", "B9"], "minerals": ["fer", "potassium"] }
+    },
+    {
+      "id": "roquette",
+      "name": "Roquette",
+      "emoji": "🌿",
+      "family": "Brassicacées",
+      "type": "feuille",
+      "description": "Salade au goût piquant et poivré, croissance très rapide.",
+      "varieties": ["Comune", "Selvatica", "Wasabi Rocket", "Astro"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "bien drainé, pH 6-7",
+        "space_cm": 15,
+        "depth_cm": 10
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [3, 4, 5, 8, 9, 10], "notes": "Éviter la chaleur estivale (monte en graine)" }
+      },
+      "transplant": null,
+      "harvest": { "months": [4, 5, 6, 9, 10, 11], "days_from_transplant": { "min": 30, "max": 45 } },
+      "companions": ["laitue", "radis", "carotte"],
+      "enemies": [],
+      "diseases": ["altise", "mildiou"],
+      "tips": "Monte vite en graine avec la chaleur. Semer en succession toutes les 2-3 semaines. Récolter jeune.",
+      "nutrition": { "calories_per_100g": 25, "vitamins": ["K", "A", "C"], "minerals": ["calcium", "potassium"] }
+    },
+    {
+      "id": "coriandre",
+      "name": "Coriandre",
+      "emoji": "🌿",
+      "family": "Apiacées",
+      "type": "aromatique",
+      "description": "Aromatique au goût divisé, feuilles fraîches et graines séchées utilisées en cuisine du monde.",
+      "varieties": ["Santo", "Leisure", "Slow Bolt", "Confetti"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "bien drainé, pH 6-7",
+        "space_cm": 20,
+        "depth_cm": 10
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [3, 4, 5, 8, 9], "notes": "En place, éviter la transplantation" }
+      },
+      "transplant": null,
+      "harvest": { "months": [5, 6, 7, 9, 10], "days_from_transplant": { "min": 30, "max": 50 } },
+      "companions": ["tomate", "poivron", "piment", "aneth"],
+      "enemies": ["fenouil"],
+      "diseases": ["mildiou", "pucerons"],
+      "tips": "Semer en succession toutes les 3 semaines. Monte vite en graine : favoriser variétés Slow Bolt.",
+      "nutrition": { "calories_per_100g": 23, "vitamins": ["K", "A", "C"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "aneth",
+      "name": "Aneth",
+      "emoji": "🌿",
+      "family": "Apiacées",
+      "type": "aromatique",
+      "description": "Aromatique fin au goût anisé, feuilles et graines parfument marinades et poissons.",
+      "varieties": ["Dukat", "Fernleaf", "Superdukat", "Long Island Mammoth"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "modéré",
+        "soil": "léger, bien drainé, pH 6-7",
+        "space_cm": 20,
+        "depth_cm": 10
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [4, 5, 6, 7], "notes": "En place directement, germination sous sol humide" }
+      },
+      "transplant": null,
+      "harvest": { "months": [6, 7, 8, 9], "days_from_transplant": { "min": 40, "max": 60 } },
+      "companions": ["concombre", "laitue", "chou"],
+      "enemies": ["carotte", "fenouil", "tomate"],
+      "diseases": ["pucerons"],
+      "tips": "Éviter de planter près de fenouil (hybridation) et de carotte (inhibition). Monte vite en graine.",
+      "nutrition": { "calories_per_100g": 43, "vitamins": ["A", "C"], "minerals": ["calcium", "fer"] }
+    },
+    {
+      "id": "sauge",
+      "name": "Sauge",
+      "emoji": "🌿",
+      "family": "Lamiacées",
+      "type": "aromatique",
+      "description": "Aromatique vivace méditerranéenne aux vertus médicinales, feuilles veloutées persistantes.",
+      "varieties": ["Officinale", "Pourpre", "Tricolore", "Ananas"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "peu",
+        "soil": "léger, calcaire, bien drainé, pH 6.5-7.5",
+        "space_cm": 40,
+        "depth_cm": 20
+      },
+      "germination_days": { "min": 14, "max": 21 },
+      "sowing": {
+        "indoor": { "months": [2, 3, 4], "notes": "En godets, ou mieux par boutures" },
+        "outdoor": { "months": [5, 6], "notes": "En place quand le sol est chaud" }
+      },
+      "transplant": { "months": [4, 5, 9], "notes": "Exposition chaude et sol bien drainé" },
+      "harvest": { "months": [4, 5, 6, 7, 8, 9, 10], "days_from_transplant": { "min": 90, "max": 120 } },
+      "companions": ["chou", "carotte", "tomate", "romarin"],
+      "enemies": ["basilic", "concombre"],
+      "diseases": ["oïdium", "rouille"],
+      "tips": "Tailler après floraison pour éviter la lignification. Repousse naturellement de nombreux insectes ravageurs.",
+      "nutrition": { "calories_per_100g": 315, "vitamins": ["K", "A", "C"], "minerals": ["calcium", "fer"] }
+    },
+    {
+      "id": "framboisier",
+      "name": "Framboisier",
+      "emoji": "🍓",
+      "family": "Rosacées",
+      "type": "fruit",
+      "description": "Petit fruit délicat à saveur acidulée, pousse en cannes épineuses ou inermes.",
+      "varieties": ["Malahat", "Tulameen", "Héritage", "Autumn Bliss", "Glen Ample"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "riche, légèrement acide, bien drainé, pH 5.5-6.5",
+        "space_cm": 50,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 28, "max": 56 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [10, 11, 3, 4], "notes": "Par plants ou drageons, pas par graines" }
+      },
+      "transplant": { "months": [10, 11, 3, 4], "notes": "Planter les cannes à 40-50 cm, tuteurer" },
+      "harvest": { "months": [6, 7, 8, 9], "days_from_transplant": { "min": 365, "max": 730 } },
+      "companions": ["ail", "fraisier", "bourrache"],
+      "enemies": ["fenouil"],
+      "diseases": ["botrytis", "anthracnose", "pucerons"],
+      "tips": "Tailler les cannes ayant fructifié en automne. Variétés remontantes pour double récolte été et automne.",
+      "nutrition": { "calories_per_100g": 52, "vitamins": ["C", "K", "B9"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "groseillier",
+      "name": "Groseillier",
+      "emoji": "🍇",
+      "family": "Grossulariaceae",
+      "type": "fruit",
+      "description": "Arbuste fruitier très rustique produisant en grappes. Rouge, blanc ou noir (cassis).",
+      "varieties": ["Rovada", "Stanza", "Jonkheer van Tets", "White Versailles"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "régulier",
+        "soil": "frais, humifère, pH 6-7",
+        "space_cm": 120,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 30, "max": 60 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [10, 11, 3, 4], "notes": "Par plants ou boutures ligneuses" }
+      },
+      "transplant": { "months": [10, 11, 3, 4], "notes": "Planter en gobelet ou en espalier" },
+      "harvest": { "months": [6, 7, 8], "days_from_transplant": { "min": 365, "max": 730 } },
+      "companions": ["framboisier", "fraisier"],
+      "enemies": [],
+      "diseases": ["oïdium", "rouille_vésiculeuse", "pucerons_rouges"],
+      "tips": "Tailler en gobelet pour faciliter la récolte. Protéger les fruits des oiseaux avec un filet.",
+      "nutrition": { "calories_per_100g": 56, "vitamins": ["C", "B5"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "petit_pois",
+      "name": "Petit pois",
+      "emoji": "🫛",
+      "family": "Légumineuses",
+      "type": "légume-fruit",
+      "description": "Légumineuse grimpante, on récolte les graines dans les gousses. Très sucré cueilli frais.",
+      "varieties": ["Douce Provence", "Feltham First", "Lincoln", "Kelvedon Wonder"],
+      "needs": {
+        "sun": "soleil à mi-ombre",
+        "water": "modéré",
+        "soil": "léger, bien drainé, pH 6-7.5",
+        "space_cm": 10,
+        "depth_cm": 5
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [2, 3, 4, 9, 10], "notes": "Résiste au gel, éviter la chaleur (montée en graine)" }
+      },
+      "transplant": null,
+      "harvest": { "months": [5, 6, 7], "days_from_transplant": { "min": 55, "max": 80 } },
+      "companions": ["carotte", "radis", "menthe", "laitue"],
+      "enemies": ["oignon", "ail", "echalote"],
+      "diseases": ["oïdium", "mildiou", "pucerons"],
+      "tips": "Installer un filet ou des branches pour le tuteurage. Consommer rapidement après récolte (sucre se transforme en amidon).",
+      "nutrition": { "calories_per_100g": 81, "vitamins": ["C", "K", "B1", "B9"], "minerals": ["fer", "potassium"] }
+    },
+    {
+      "id": "feve",
+      "name": "Fève",
+      "emoji": "🫘",
+      "family": "Légumineuses",
+      "type": "légume-fruit",
+      "description": "Légumineuse robuste qui fixe l'azote, une des premières à semer dès l'automne.",
+      "varieties": ["Aguadulce", "Witkiem Manita", "Imperial Green Longpod", "The Sutton"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "modéré",
+        "soil": "riche, bien drainé, pH 6.5-7.5",
+        "space_cm": 25,
+        "depth_cm": 5
+      },
+      "germination_days": { "min": 7, "max": 14 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [10, 11, 2, 3], "notes": "Résiste aux gelées, semer en place directement" }
+      },
+      "transplant": null,
+      "harvest": { "months": [5, 6, 7], "days_from_transplant": { "min": 60, "max": 90 } },
+      "companions": ["carotte", "chou", "épinard"],
+      "enemies": ["oignon", "ail", "fenouil"],
+      "diseases": ["pucerons_noirs", "botrytis", "rouille"],
+      "tips": "Pincer les bourgeons terminaux lors de la floraison pour réduire les pucerons noirs. Excellent engrais vert.",
+      "nutrition": { "calories_per_100g": 88, "vitamins": ["B1", "B9", "C"], "minerals": ["fer", "potassium"] }
+    },
+    {
+      "id": "patate_douce",
+      "name": "Patate douce",
+      "emoji": "🍠",
+      "family": "Convolvulacées",
+      "type": "légume-racine",
+      "description": "Tubercule sucré originaire des tropiques, nécessite une longue saison chaude.",
+      "varieties": ["Beauregard", "Georgia Jet", "Covington", "Murasaki"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier",
+        "soil": "léger, sableux, bien drainé, pH 5.5-6.5",
+        "space_cm": 40,
+        "depth_cm": 30
+      },
+      "germination_days": { "min": 14, "max": 21 },
+      "sowing": {
+        "indoor": { "months": [3, 4], "notes": "En boutures (plants) ou par tubercule, 22°C minimum" },
+        "outdoor": null
+      },
+      "transplant": { "months": [5, 6], "notes": "Uniquement après les gelées, sol bien réchauffé >20°C" },
+      "harvest": { "months": [9, 10], "days_from_transplant": { "min": 90, "max": 120 } },
+      "companions": ["haricot_vert", "mais", "thym"],
+      "enemies": ["pomme_de_terre"],
+      "diseases": ["mildiou", "charançon_de_la_patate"],
+      "tips": "Nécessite 4-5 mois sans gel. En régions fraîches, cultiver sous voile. Laisser sécher les tubercules 2 semaines avant stockage.",
+      "nutrition": { "calories_per_100g": 86, "vitamins": ["A", "C", "B6"], "minerals": ["potassium", "manganèse"] }
+    },
+    {
+      "id": "kale",
+      "name": "Chou kale",
+      "emoji": "🥬",
+      "family": "Brassicacées",
+      "type": "feuille",
+      "description": "Super-aliment aux feuilles frisées très nutritives, résistant au gel et aux maladies.",
+      "varieties": ["Nero di Toscana", "Red Russian", "Curly Scots", "Dwarf Green Curled"],
+      "needs": {
+        "sun": "plein soleil",
+        "water": "régulier",
+        "soil": "riche, compact, pH 6.5-7.5",
+        "space_cm": 45,
+        "depth_cm": 25
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": { "months": [3, 4, 5, 6], "notes": "En godets puis repiquage" },
+        "outdoor": { "months": [5, 6, 7], "notes": "En pépinière" }
+      },
+      "transplant": { "months": [5, 6, 7, 8], "notes": "Espacement généreux pour développement des feuilles" },
+      "harvest": { "months": [9, 10, 11, 12, 1, 2, 3], "days_from_transplant": { "min": 60, "max": 90 } },
+      "companions": ["ail", "celeri", "épinard"],
+      "enemies": ["tomate", "fraisier"],
+      "diseases": ["pucerons_cendrés", "altise", "hernie_du_chou"],
+      "tips": "Le gel améliore la saveur en réduisant l'amertume. Récolter les feuilles extérieures en premier.",
+      "nutrition": { "calories_per_100g": 49, "vitamins": ["K", "A", "C", "B9"], "minerals": ["calcium", "potassium", "fer"] }
+    },
+    {
+      "id": "cresson",
+      "name": "Cresson",
+      "emoji": "🌿",
+      "family": "Brassicacées",
+      "type": "feuille",
+      "description": "Salade aquatique ou de jardin au goût piquant, riche en vitamines et minéraux.",
+      "varieties": ["Cresson de fontaine", "Cresson de jardin", "Cresson alénois"],
+      "needs": {
+        "sun": "mi-ombre",
+        "water": "abondant et constant",
+        "soil": "humide, riche, pH 7-7.5",
+        "space_cm": 15,
+        "depth_cm": 10
+      },
+      "germination_days": { "min": 5, "max": 10 },
+      "sowing": {
+        "indoor": null,
+        "outdoor": { "months": [3, 4, 5, 8, 9, 10], "notes": "En place, garder sol constamment humide" }
+      },
+      "transplant": null,
+      "harvest": { "months": [4, 5, 6, 9, 10, 11], "days_from_transplant": { "min": 20, "max": 40 } },
+      "companions": ["radis", "laitue", "mache"],
+      "enemies": [],
+      "diseases": ["mildiou", "pucerons"],
+      "tips": "Ne jamais laisser le sol sécher. Le cresson de jardin tolère mieux la sécheresse que le cresson de fontaine.",
+      "nutrition": { "calories_per_100g": 11, "vitamins": ["K", "A", "C"], "minerals": ["calcium", "fer"] }
     }
   ],
   "stages": [
