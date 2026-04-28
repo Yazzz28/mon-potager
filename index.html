@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Potager 🌱</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🌱</span>
+      <span class="logo-text">Mon Potager</span>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-page="dashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Tableau de bord</span>
+      </button>
+      <button class="nav-item" data-page="monpotager">
+        <span class="nav-icon">🥕</span>
+        <span>Mon Potager</span>
+      </button>
+      <button class="nav-item" data-page="ajouter">
+        <span class="nav-icon">➕</span>
+        <span>Ajouter une plante</span>
+      </button>
+      <button class="nav-item" data-page="calendrier">
+        <span class="nav-icon">📅</span>
+        <span>Calendrier</span>
+      </button>
+      <button class="nav-item" data-page="bibliotheque">
+        <span class="nav-icon">📚</span>
+        <span>Bibliothèque</span>
+      </button>
+      <button class="nav-item" data-page="stats">
+        <span class="nav-icon">📊</span>
+        <span>Statistiques</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="weather-widget" id="weather-widget">
+        <span>📍 Potager</span>
+        <span id="season-label"></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburger">☰</button>
+      <div class="topbar-title" id="topbar-title">Tableau de bord</div>
+      <div class="topbar-right">
+        <span id="today-date"></span>
+        <button class="btn btn-primary" id="quick-add-btn">+ Ajouter</button>
+      </div>
+    </header>
+
+    <!-- PAGES -->
+
+    <!-- DASHBOARD -->
+    <section class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h1 id="greeting">Bonjour ! 🌞</h1>
+        <p class="subtitle">Voici l'état de votre potager aujourd'hui.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-total">0</div>
+            <div class="stat-label">Plantes actives</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🧺</div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-harvest">0</div>
+            <div class="stat-label">Prêtes à récolter</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚠️</div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-alerts">0</div>
+            <div class="stat-label">Alertes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-thismonth">0</div>
+            <div class="stat-label">Actions ce mois</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="section-card" id="alerts-section">
+        <div class="section-card-header">
+          <h2>⚠️ Alertes & Rappels</h2>
+        </div>
+        <div id="alerts-list" class="alerts-list">
+          <p class="empty-state">Aucune alerte pour le moment 🎉</p>
+        </div>
+      </div>
+
+      <!-- Upcoming actions -->
+      <div class="section-card">
+        <div class="section-card-header">
+          <h2>📅 Prochaines actions</h2>
+        </div>
+        <div id="upcoming-list" class="upcoming-list">
+          <p class="empty-state">Ajoutez des plantes pour voir vos prochaines actions.</p>
+        </div>
+      </div>
+
+      <!-- Seasonal suggestions -->
+      <div class="section-card">
+        <div class="section-card-header">
+          <h2>💡 À planter ce mois-ci</h2>
+        </div>
+        <div id="seasonal-list" class="seasonal-grid">
+        </div>
+      </div>
+    </section>
+
+    <!-- MON POTAGER -->
+    <section class="page" id="page-monpotager">
+      <div class="page-header">
+        <h1>🥕 Mon Potager</h1>
+        <p class="subtitle">Toutes vos plantes en cours de culture.</p>
+      </div>
+
+      <div class="filters-bar">
+        <input type="text" id="search-plants" placeholder="🔍 Rechercher..." class="search-input" />
+        <select id="filter-stage" class="filter-select">
+          <option value="">Tous les stades</option>
+        </select>
+        <select id="filter-type" class="filter-select">
+          <option value="">Tous les types</option>
+          <option value="légume-fruit">Légumes-fruits</option>
+          <option value="légume-racine">Légumes-racines</option>
+          <option value="feuille">Feuilles</option>
+          <option value="aromatique">Aromatiques</option>
+          <option value="fruit">Fruits</option>
+          <option value="bulbe">Bulbes</option>
+        </select>
+        <button class="btn btn-outline" id="sort-btn" title="Trier">⇅ Trier</button>
+      </div>
+
+      <div id="plants-grid" class="plants-grid">
+        <div class="empty-state-big">
+          <div class="empty-icon">🌾</div>
+          <h3>Votre potager est vide</h3>
+          <p>Ajoutez vos premières plantes pour commencer le suivi !</p>
+          <button class="btn btn-primary" data-page="ajouter">+ Ajouter une plante</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AJOUTER UNE PLANTE -->
+    <section class="page" id="page-ajouter">
+      <div class="page-header">
+        <h1>➕ Ajouter une plante</h1>
+        <p class="subtitle">Enregistrez une nouvelle plante dans votre potager.</p>
+      </div>
+
+      <div class="form-container">
+        <form id="add-plant-form" class="plant-form">
+
+          <div class="form-group">
+            <label for="select-plant">Choisir une plante *</label>
+            <div class="plant-search-wrapper">
+              <input type="text" id="plant-search-input" placeholder="🔍 Rechercher une plante..." class="form-input" autocomplete="off" />
+              <div id="plant-dropdown" class="plant-dropdown hidden"></div>
+            </div>
+            <input type="hidden" id="selected-plant-id" />
+          </div>
+
+          <div id="plant-preview" class="plant-preview hidden">
+            <div class="plant-preview-header">
+              <span id="preview-emoji" class="plant-preview-emoji"></span>
+              <div>
+                <h3 id="preview-name"></h3>
+                <span id="preview-family" class="badge"></span>
+              </div>
+            </div>
+            <div class="preview-info-grid">
+              <div class="preview-info-item">
+                <span class="info-icon">☀️</span>
+                <span id="preview-sun"></span>
+              </div>
+              <div class="preview-info-item">
+                <span class="info-icon">💧</span>
+                <span id="preview-water"></span>
+              </div>
+              <div class="preview-info-item">
+                <span class="info-icon">⏱️</span>
+                <span id="preview-germination"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="plant-name-custom">Nom personnalisé (optionnel)</label>
+              <input type="text" id="plant-name-custom" placeholder="Ex: Tomates du balcon" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="plant-variety">Variété</label>
+              <input type="text" id="plant-variety" placeholder="Ex: Cœur de bœuf" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="plant-stage">Stade actuel *</label>
+              <select id="plant-stage" class="form-input" required>
+                <option value="">Choisir un stade</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="plant-date">Date de ce stade *</label>
+              <input type="date" id="plant-date" class="form-input" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="plant-location">Emplacement</label>
+              <input type="text" id="plant-location" placeholder="Ex: Carré n°2, Serre, Balcon..." class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="plant-quantity">Quantité</label>
+              <input type="number" id="plant-quantity" value="1" min="1" max="999" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="plant-notes">Notes</label>
+            <textarea id="plant-notes" placeholder="Notes libres sur cette plante..." class="form-input" rows="3"></textarea>
+          </div>
+
+          <div id="date-predictions" class="date-predictions hidden">
+            <h3>📅 Dates estimées</h3>
+            <div id="predictions-content" class="predictions-grid"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="cancel-form-btn">Annuler</button>
+            <button type="submit" class="btn btn-primary">🌱 Ajouter au potager</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CALENDRIER -->
+    <section class="page" id="page-calendrier">
+      <div class="page-header">
+        <h1>📅 Calendrier du potager</h1>
+        <p class="subtitle">Vue mensuelle de toutes vos actions.</p>
+      </div>
+
+      <div class="calendar-nav">
+        <button class="btn btn-outline" id="cal-prev">◀</button>
+        <h2 id="cal-title"></h2>
+        <button class="btn btn-outline" id="cal-next">▶</button>
+      </div>
+
+      <div class="calendar-legend">
+        <span class="legend-item"><span class="dot dot-green"></span> Semis</span>
+        <span class="legend-item"><span class="dot dot-blue"></span> Repiquage</span>
+        <span class="legend-item"><span class="dot dot-orange"></span> Récolte</span>
+        <span class="legend-item"><span class="dot dot-red"></span> Alerte</span>
+      </div>
+
+      <div class="calendar-grid-header">
+        <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
+      </div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+
+      <div class="section-card" id="cal-events-section">
+        <div class="section-card-header">
+          <h2 id="cal-events-title">Événements du mois</h2>
+        </div>
+        <div id="cal-events-list" class="cal-events-list"></div>
+      </div>
+    </section>
+
+    <!-- BIBLIOTHÈQUE -->
+    <section class="page" id="page-bibliotheque">
+      <div class="page-header">
+        <h1>📚 Bibliothèque des plantes</h1>
+        <p class="subtitle">Fiches détaillées de toutes les plantes disponibles.</p>
+      </div>
+
+      <div class="filters-bar">
+        <input type="text" id="lib-search" placeholder="🔍 Rechercher..." class="search-input" />
+        <select id="lib-filter-type" class="filter-select">
+          <option value="">Tous les types</option>
+          <option value="légume-fruit">Légumes-fruits</option>
+          <option value="légume-racine">Légumes-racines</option>
+          <option value="feuille">Feuilles</option>
+          <option value="aromatique">Aromatiques</option>
+          <option value="fruit">Fruits</option>
+          <option value="bulbe">Bulbes</option>
+          <option value="tige/racine">Tiges/Racines</option>
+          <option value="légume-tige">Légumes-tiges</option>
+          <option value="légume-fleur">Légumes-fleurs</option>
+        </select>
+      </div>
+
+      <div id="library-grid" class="library-grid"></div>
+
+      <!-- Plant detail modal -->
+      <div id="plant-modal" class="modal hidden">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-content">
+          <button class="modal-close" id="modal-close">✕</button>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="page" id="page-stats">
+      <div class="page-header">
+        <h1>📊 Statistiques</h1>
+        <p class="subtitle">Vue d'ensemble de votre potager.</p>
+      </div>
+
+      <div class="stats-detail-grid">
+        <div class="section-card">
+          <div class="section-card-header"><h2>Répartition par type</h2></div>
+          <div id="stats-types" class="stats-chart-container"></div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-header"><h2>Répartition par stade</h2></div>
+          <div id="stats-stages" class="stats-chart-container"></div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-header"><h2>🏆 Historique des récoltes</h2></div>
+        <div id="stats-harvest-history" class="harvest-history"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PLANT DETAIL MODAL (for my garden) -->
+  <div id="plant-detail-modal" class="modal hidden">
+    <div class="modal-backdrop" id="plant-detail-backdrop"></div>
+    <div class="modal-content modal-content-wide">
+      <button class="modal-close" id="plant-detail-close">✕</button>
+      <div id="plant-detail-body"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
