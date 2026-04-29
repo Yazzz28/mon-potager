@@ -2,10 +2,11 @@ import { App } from './state.js';
 import { Utils } from './utils.js';
 import { DB } from './db.js';
 import { Predictions } from './predictions.js';
+import { Weather } from './weather.js';
 
 export const Alerts = {
   compute() {
-    const alerts = [];
+    const alerts = [...Weather.getAlerts()];
     const today = Utils.toInputDate(new Date());
     const in7 = Utils.addDays(today, 7);
 

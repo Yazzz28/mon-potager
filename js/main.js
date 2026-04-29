@@ -11,6 +11,7 @@ import { closePlantDetailModal } from './renders/detail.js';
 import { exportBackup, importBackup } from './backup.js';
 import { showToast } from './toast.js';
 import { initTerrain } from './renders/terrain.js';
+import { Weather } from './weather.js';
 
 async function init() {
   // Load DB
@@ -165,6 +166,9 @@ async function init() {
 
   // Initial render
   navigateTo('dashboard');
+
+  // Fetch météo en arrière-plan (met à jour widget + dashboard quand dispo)
+  Weather.init();
 }
 
 document.addEventListener('DOMContentLoaded', init);

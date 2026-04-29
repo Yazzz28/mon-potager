@@ -1,0 +1,107 @@
+/* ============================================================
+   WEATHER — widget sidebar + badges calendrier + section dashboard
+   ============================================================ */
+
+/* ---- Sidebar : état chargement ---- */
+#weather-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  min-height: 20px;
+}
+
+/* ---- Sidebar : données chargées ---- */
+#weather-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-icon  { font-size: 22px; line-height: 1; }
+.weather-temp  { font-size: 18px; font-weight: 700; color: #fff; }
+.weather-label { font-size: 12px; color: rgba(255, 255, 255, 0.75); flex: 1; }
+
+.weather-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.weather-day {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.wd-emoji { font-size: 13px; min-width: 18px; }
+.wd-temps { flex: 1; }
+.wd-rain  { color: #90CAF9; font-size: 11px; }
+
+/* ---- Dashboard : prévision 3 jours ---- */
+.weather-forecast-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.weather-forecast-day {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-page, #f8f9fa);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.wfd-date  { min-width: 90px; color: var(--text-secondary); font-size: 13px; }
+.wfd-emoji { font-size: 20px; min-width: 24px; }
+.wfd-info  { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+.wfd-label { font-weight: 500; color: var(--text-primary); }
+.wfd-temps { font-size: 12px; color: var(--text-secondary); }
+.wfd-rain  { font-size: 13px; color: #1565C0; min-width: 70px; text-align: right; }
+
+/* ---- Calendrier : badge météo sur les jours ---- */
+.cal-weather-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-top: 2px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cal-weather-badge.frost {
+  background: #E3F2FD;
+  color: #1565C0;
+  border: 1px solid #90CAF9;
+}
+
+.cal-weather-badge.rain {
+  background: #E8F5E9;
+  color: #1B5E20;
+  border: 1px solid #81C784;
+}
+
+.cal-weather-badge.heavy-rain {
+  background: #FFF3E0;
+  color: #E65100;
+  border: 1px solid #FFAB40;
+}

@@ -5,6 +5,7 @@ import { Alerts } from '../alerts.js';
 import { Predictions } from '../predictions.js';
 import { navigateTo } from '../navigation.js';
 import { prefillForm } from './form.js';
+import { Weather } from '../weather.js';
 
 export function renderDashboard() {
   // Greeting
@@ -76,4 +77,6 @@ export function renderDashboard() {
       setTimeout(() => prefillForm(chip.dataset.plantId), 150);
     });
   });
+
+  Weather.renderDashboardSection();
 }

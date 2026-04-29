@@ -4,6 +4,7 @@ export const App = {
   currentPage: 'dashboard',
   calendarDate: new Date(),
   sortMode: 'date-desc',
+  weather: null,
   terrain: {
     width:           10,
     height:          8,

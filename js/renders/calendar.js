@@ -2,6 +2,7 @@ import { App } from '../state.js';
 import { DB } from '../db.js';
 import { Utils } from '../utils.js';
 import { Predictions } from '../predictions.js';
+import { Weather } from '../weather.js';
 
 export function renderCalendar() {
   const d = App.calendarDate;
@@ -34,9 +35,22 @@ export function renderCalendar() {
     const isToday = dateStr === todayStr;
     const dayEvents = events.filter(ev => ev.date === dateStr);
 
+    const wDay = Weather.getDayData(dateStr);
+    let weatherBadge = '';
+    if (wDay) {
+      if (wDay.tempMin < 2) {
+        weatherBadge = `<div class="cal-weather-badge frost">🧊 ${wDay.tempMin}°</div>`;
+      } else if (wDay.precipSum > 10 || wDay.precipProba > 80) {
+        weatherBadge = `<div class="cal-weather-badge heavy-rain">🌧️ ${wDay.precipSum}mm</div>`;
+      } else if (wDay.precipSum > 0) {
+        weatherBadge = `<div class="cal-weather-badge rain">💧 ${wDay.precipSum}mm</div>`;
+      }
+    }
+
     html += `<div class="cal-day ${isToday ? 'today' : ''}">
       <div class="cal-day-num">${day}</div>
       <div class="cal-day-events">
+        ${weatherBadge}
         ${dayEvents.slice(0,3).map(ev => `
           <div class="cal-event-dot" style="background:${ev.color}" title="${ev.label}: ${ev.plant}">
             ${ev.emoji} ${ev.plant.length > 8 ? ev.plant.slice(0,7)+'…' : ev.plant}
