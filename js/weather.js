@@ -63,6 +63,16 @@ function _getCoords() {
   });
 }
 
+async function _fetchCityName(lat, lon) {
+  try {
+    const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&zoom=10`;
+    const res = await fetch(url, { headers: { 'User-Agent': 'MonPotager/1.0' } });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.address?.city ?? data.address?.town ?? data.address?.village ?? data.address?.municipality ?? null;
+  } catch { return null; }
+}
+
 async function _fetchRaw(lat, lon) {
   const url = new URL('https://api.open-meteo.com/v1/forecast');
   Object.entries({
@@ -116,6 +126,9 @@ function _updateWidget() {
   loading.classList.add('hidden');
   content.classList.remove('hidden');
 
+  const cityEl = document.getElementById('weather-city');
+  if (cityEl) cityEl.textContent = w.cityName ?? '';
+
   document.getElementById('weather-emoji').textContent = w.current.emoji;
   document.getElementById('weather-temp').textContent  = `${w.current.temp}°C`;
   document.getElementById('weather-label').textContent = w.current.label;
@@ -164,8 +177,12 @@ export const Weather = {
     }
     try {
       const coords = await _getCoords();
-      const raw    = await _fetchRaw(coords.lat, coords.lon);
-      App.weather  = _parse(raw, coords.lat, coords.lon);
+      const [raw, cityName] = await Promise.all([
+        _fetchRaw(coords.lat, coords.lon),
+        _fetchCityName(coords.lat, coords.lon),
+      ]);
+      App.weather          = _parse(raw, coords.lat, coords.lon);
+      App.weather.cityName = cityName;
       _saveCache(App.weather);
     } catch (e) {
       console.warn('[Weather]', e.message);
