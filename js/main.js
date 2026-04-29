@@ -12,6 +12,8 @@ import { exportBackup, importBackup } from './backup.js';
 import { showToast } from './toast.js';
 import { initTerrain } from './renders/terrain.js';
 import { Weather } from './weather.js';
+import { DiseaseRisks } from './diseaseRisks.js';
+import { SunriseSunset } from './sunriseSunset.js';
 
 async function init() {
   // Load DB
@@ -167,8 +169,11 @@ async function init() {
   // Initial render
   navigateTo('dashboard');
 
-  // Fetch météo en arrière-plan (met à jour widget + dashboard quand dispo)
-  Weather.init();
+  // Fetch météo en arrière-plan, puis déclenche les sections dépendantes
+  Weather.init().then(() => DiseaseRisks.renderDashboardSection());
+
+  // Fetch lever/coucher soleil en arrière-plan
+  SunriseSunset.init();
 }
 
 document.addEventListener('DOMContentLoaded', init);

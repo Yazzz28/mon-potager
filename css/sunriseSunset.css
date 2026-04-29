@@ -1,0 +1,70 @@
+.sunrise-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.sunrise-times {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-page, #f8f9fa);
+  border-radius: 10px;
+}
+
+.sunrise-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sunrise-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.sunrise-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sunrise-item strong {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sunrise-item span {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sunrise-sun-advice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.sunrise-sun-advice p {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.advice-ok   { background: #E8F5E9; border-left: 4px solid #4CAF50; }
+.advice-warn { background: #FFF3E0; border-left: 4px solid #FF9800; }
+
+@media (max-width: 600px) {
+  .sunrise-times {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

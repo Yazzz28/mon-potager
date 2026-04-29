@@ -6,6 +6,8 @@ import { Predictions } from '../predictions.js';
 import { navigateTo } from '../navigation.js';
 import { prefillForm } from './form.js';
 import { Weather } from '../weather.js';
+import { DiseaseRisks } from '../diseaseRisks.js';
+import { SunriseSunset } from '../sunriseSunset.js';
 
 export function renderDashboard() {
   // Greeting
@@ -78,5 +80,7 @@ export function renderDashboard() {
     });
   });
 
+  DiseaseRisks.renderDashboardSection();
+  SunriseSunset.renderDashboardSection();
   Weather.renderDashboardSection();
 }

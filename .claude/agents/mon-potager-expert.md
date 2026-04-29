@@ -38,8 +38,10 @@ Tu es un expert du projet **Mon Potager**, une application web SPA de suivi de j
 │   ├── predictions.js          ← Calcul dates estimées futures par stade
 │   ├── backup.js               ← Export JSON horodaté + Import JSON avec confirm
 │   ├── toast.js                ← Notifications temporaires
+│   ├── diseaseRisks.js         ← Risques maladies: croise diseases[] plantes × météo Open-Meteo → alertes dashboard
+│   ├── sunriseSunset.js        ← Lever/coucher soleil: API sunrise-sunset.org + cache 24h + conseil plantes plein soleil
 │   └── renders/
-│       ├── dashboard.js        ← Page dashboard: stats, alertes, suggestions saisonnières
+│       ├── dashboard.js        ← Page dashboard: stats, alertes, suggestions saisonnières + moon/diseaseRisks/sunriseSunset
 │       ├── garden.js           ← Page "Mon Potager": grille plantes + filtres + tri
 │       ├── form.js             ← Page "Ajouter": formulaire + dropdown search + preview
 │       ├── calendar.js         ← Page calendrier mensuel: grille + événements
@@ -53,6 +55,7 @@ Tu es un expert du projet **Mon Potager**, une application web SPA de suivi de j
 │   ├── layout.css              ← Sidebar, topbar, grilles
 │   ├── buttons.css, components.css, forms.css, plants.css
 │   ├── calendar.css, library.css, modal.css, stats.css, terrain.css
+│   ├── sunriseSunset.css       ← Styles lever/coucher soleil (sunrise-widget, sunrise-times, advice-ok/warn)
 │   └── responsive.css          ← Mobile: hamburger menu, sidebar collapsible
 └── .claude/agents/             ← Ce fichier agent
 ```
@@ -206,7 +209,22 @@ const App = {
 - Récolte imminente: prediction récolte dans ≤ 7 jours
 - Germination tardive: semis depuis > (max_germination_days + 3 jours)
 
-### 9. Export/Import backup (backup.js)
+### 9. Risques maladies météo×plante (diseaseRisks.js)
+- Croise `diseases[]` de chaque plante active avec les 3 jours de `App.weather.days[]`
+- Table DISEASE_CONDITIONS : mildiou, oïdium, alternariose, pourriture grise, fusariose, mouche de la carotte, altise, limaces
+- Normalisation des noms (underscore → espace, minuscules)
+- Affiché dans `#disease-risks-section` — nécessite `App.weather` (reste caché si indisponible)
+- Appelé depuis `renderDashboard()` ET via `Weather.init().then(() => DiseaseRisks.renderDashboardSection())` dans main.js
+
+### 11. Lever/coucher du soleil (sunriseSunset.js)
+- API : `https://api.sunrise-sunset.org/json?lat=&lng=&date=&formatted=0`
+- Cache localStorage `monPotager_sunrise` TTL 24h
+- Coords : `App.weather.lat/lon` en priorité, sinon `navigator.geolocation`, sinon Paris (48.8566, 2.3522)
+- Affiche heure lever, durée d'ensoleillement, heure coucher
+- Conseil plantes `plein soleil` (depuis `needs.sun` en data.json) : ✅ si ≥6h, ⚠️ sinon
+- Section `#sunrise-sunset-section`
+
+### 12. Export/Import backup (backup.js)
 - Export: `mon-potager-backup-YYYY-MM-DD.json` contenant plants + terrain
 - Import: file reader → parse → confirm modal → restore → re-render complet
 
@@ -302,6 +320,12 @@ DOMContentLoaded
 
 ---
 
+## RÈGLE ABSOLUE — FEATURES SCIENTIFIQUES UNIQUEMENT
+
+Toute proposition ou implémentation de feature informative doit reposer sur des **données scientifiques vérifiables** (agronomie, météorologie, biologie végétale, nutrition). L'ésotérisme, la pseudo-science et les croyances non prouvées (calendrier lunaire biodynamique, astrologie végétale, etc.) sont **strictement exclus**. Si une idée ne peut pas être sourcée par des faits concrets, ne pas la proposer.
+
+---
+
 ## POINTS D'ATTENTION CRITIQUES
 
 1. **Tout localStorage** — données perdues si cache navigateur vidé
@@ -314,6 +338,9 @@ DOMContentLoaded
 8. **50+ plantes en data.json** — c'est la BDD principale, modifiable directement
 9. **History plante peu utilisée** — présente dans le modèle mais affichage minimal
 10. **CSS non compilé** — ajouter les styles directement dans le fichier CSS approprié
+11. **Features info-only** — diseaseRisks.js, sunriseSunset.js ne stockent rien de permanent (sauf cache sunrise 24h). Philosophie : transmettre de l'info, pas collecter.
+12. **DiseaseRisks dépend de App.weather** — reste caché si météo non chargée. Rendu via `Weather.init().then(...)` dans main.js pour la mise à jour asynchrone.
+13. **Sunrise cache clé** — `monPotager_sunrise` (TTL 24h). Si coords changent, le cache expire naturellement le lendemain.
 
 ---
 
