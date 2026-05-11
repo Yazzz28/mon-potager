@@ -38,6 +38,7 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .cal-day {
@@ -49,6 +50,7 @@
   font-size: 12px;
   position: relative;
   transition: box-shadow var(--transition);
+  overflow: hidden;
 }
 .cal-day:hover             { box-shadow: var(--shadow-md); }
 .cal-day.empty             { background: transparent; border: none; }
