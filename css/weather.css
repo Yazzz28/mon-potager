@@ -107,3 +107,9 @@
   color: #E65100;
   border: 1px solid #FFAB40;
 }
+
+/* ---- Dashboard : recommandations arrosage ---- */
+.watering-item         { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: var(--border-radius-sm); }
+.watering-urgent       { background: rgba(244, 67, 54, 0.08); }
+.watering-advised      { background: rgba(255, 152, 0, 0.08); }
+.watering-ok           { background: rgba(76, 175, 80, 0.08); }

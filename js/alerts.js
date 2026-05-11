@@ -62,6 +62,27 @@ export const Alerts = {
           });
         }
       }
+
+      // Semis hors saison
+      if (up.currentStage === 'semis_interieur' || up.currentStage === 'semis_exterieur') {
+        const sowingMonth = new Date(up.stageDate).getMonth() + 1; // 1-indexed
+        const validMonths = [
+          ...(dbPlant.sowing?.indoor?.months || []),
+          ...(dbPlant.sowing?.outdoor?.months || [])
+        ];
+        const uniqueMonths = [...new Set(validMonths)];
+        if (uniqueMonths.length > 0 && !uniqueMonths.includes(sowingMonth)) {
+          const monthNames = ['janvier','février','mars','avril','mai','juin',
+            'juillet','août','septembre','octobre','novembre','décembre'];
+          const validMonthNames = uniqueMonths.sort((a, b) => a - b).map(m => monthNames[m - 1]).join(', ');
+          alerts.push({
+            type: 'warning',
+            icon: '📅',
+            title: `${dbPlant.emoji} ${name} — Semis hors saison`,
+            text: `Semé en ${monthNames[sowingMonth - 1]}, période recommandée : ${validMonthNames}`
+          });
+        }
+      }
     });
 
     return alerts;

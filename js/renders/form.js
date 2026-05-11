@@ -49,6 +49,26 @@ export function showPlantPreview(dbPlant) {
   document.getElementById('preview-water').textContent = Utils.capitalize(dbPlant.needs.water);
   document.getElementById('preview-germination').textContent =
     `Germination : ${dbPlant.germination_days.min}-${dbPlant.germination_days.max} jours`;
+
+  const depthItem = document.getElementById('preview-depth-item');
+  if (dbPlant.needs.depth_cm) {
+    document.getElementById('preview-depth').textContent = `Profondeur : ${dbPlant.needs.depth_cm} cm`;
+    depthItem.classList.remove('hidden');
+  } else {
+    depthItem.classList.add('hidden');
+  }
+
+  const sowingNotes = [
+    dbPlant.sowing?.indoor?.notes ? `💡 ${dbPlant.sowing.indoor.notes}` : null,
+    dbPlant.sowing?.outdoor?.notes ? `🌿 ${dbPlant.sowing.outdoor.notes}` : null,
+    dbPlant.transplant?.notes ? `💡 ${dbPlant.transplant.notes}` : null,
+  ].filter(Boolean);
+
+  const notesContainer = document.getElementById('preview-sowing-notes');
+  notesContainer.innerHTML = sowingNotes
+    .map(note => `<small class="sowing-note">${note}</small>`)
+    .join('');
+
   document.getElementById('plant-preview').classList.remove('hidden');
 }
 

@@ -14,8 +14,15 @@ import { initTerrain } from './renders/terrain.js';
 import { Weather } from './weather.js';
 import { DiseaseRisks } from './diseaseRisks.js';
 import { SunriseSunset } from './sunriseSunset.js';
+import { Watering } from './watering.js';
 
 async function init() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(err =>
+      console.warn('Service Worker registration failed:', err)
+    );
+  }
+
   // Load DB
   try {
     const res = await fetch('./data.json');
@@ -143,6 +150,10 @@ async function init() {
     App.calendarDate.setMonth(App.calendarDate.getMonth() + 1);
     renderCalendar();
   });
+  document.getElementById('cal-today').addEventListener('click', () => {
+    App.calendarDate = new Date();
+    renderCalendar();
+  });
 
   // Library search
   const libSearch = document.getElementById('lib-search');
@@ -170,7 +181,10 @@ async function init() {
   navigateTo('dashboard');
 
   // Fetch météo en arrière-plan, puis déclenche les sections dépendantes
-  Weather.init().then(() => DiseaseRisks.renderDashboardSection());
+  Weather.init().then(() => {
+    DiseaseRisks.renderDashboardSection();
+    Watering.renderDashboardSection();
+  });
 
   // Fetch lever/coucher soleil en arrière-plan
   SunriseSunset.init();

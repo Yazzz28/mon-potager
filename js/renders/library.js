@@ -82,6 +82,10 @@ export function openLibModal(plantId) {
           <span class="info-item-icon">📏</span>
           <div><span class="info-item-label">Espacement</span><span class="info-item-value">${p.needs.space_cm} cm</span></div>
         </div>
+        ${p.needs.depth_cm ? `<div class="info-item">
+          <span class="info-item-icon">📐</span>
+          <div><span class="info-item-label">Profondeur</span><span class="info-item-value">${p.needs.depth_cm} cm</span></div>
+        </div>` : ''}
       </div>
     </div>
 
@@ -89,10 +93,10 @@ export function openLibModal(plantId) {
       <h4>⏱️ Calendrier</h4>
       <div class="info-item" style="margin-bottom:8px">
         <span class="info-item-icon">🌀</span>
-        <div><span class="info-item-label">Germination</span><span class="info-item-value">${p.germination_days.min}-${p.germination_days.max} jours</span></div>
+        <div><span class="info-item-label">Germination</span><span class="info-item-value">${p.germination_days?.min ?? '?'}-${p.germination_days?.max ?? '?'} jours</span></div>
       </div>
-      ${uniqueSow.length ? `<div style="margin-bottom:8px"><span style="font-size:13px;color:var(--text-secondary)">Semis :</span><br><div class="month-row">${uniqueSow.map(m => `<span class="month-chip">${Utils.monthName(m-1)}</span>`).join('')}</div></div>` : ''}
-      ${transplantMonths.length ? `<div style="margin-bottom:8px"><span style="font-size:13px;color:var(--text-secondary)">Repiquage :</span><br><div class="month-row">${transplantMonths.map(m => `<span class="month-chip">${Utils.monthName(m-1)}</span>`).join('')}</div></div>` : ''}
+      ${uniqueSow.length ? `<div style="margin-bottom:8px"><span style="font-size:13px;color:var(--text-secondary)">Semis :</span><br><div class="month-row">${uniqueSow.map(m => `<span class="month-chip">${Utils.monthName(m-1)}</span>`).join('')}</div>${p.sowing.indoor?.notes ? `<small class="sowing-note">💡 ${p.sowing.indoor.notes}</small>` : ''}${p.sowing.outdoor?.notes ? `<small class="sowing-note">🌿 ${p.sowing.outdoor.notes}</small>` : ''}</div>` : ''}
+      ${transplantMonths.length ? `<div style="margin-bottom:8px"><span style="font-size:13px;color:var(--text-secondary)">Repiquage :</span><br><div class="month-row">${transplantMonths.map(m => `<span class="month-chip">${Utils.monthName(m-1)}</span>`).join('')}</div>${p.transplant?.notes ? `<small class="sowing-note">💡 ${p.transplant.notes}</small>` : ''}</div>` : ''}
       ${harvestMonths.length ? `<div style="margin-bottom:8px"><span style="font-size:13px;color:var(--text-secondary)">Récolte :</span><br><div class="month-row">${harvestMonths.map(m => `<span class="month-chip" style="background:#FFF8E1;border-color:#FFE082;color:#E65100">${Utils.monthName(m-1)}</span>`).join('')}</div></div>` : ''}
     </div>
 

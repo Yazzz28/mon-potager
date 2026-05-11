@@ -2,6 +2,26 @@ import { App } from './state.js';
 import { Utils } from './utils.js';
 import { DB } from './db.js';
 
+const GROWTH_BUFFER_BY_TYPE = {
+  'légume-fruit': 21,
+  'légume-racine': 10,
+  'légume-feuille': 14,
+  'feuille': 14,
+  'légume-tige': 14,
+  'légume-fleur': 18,
+  'bulbe': 10,
+  'tige/racine': 12,
+  'aromatique': 14,
+  'fruit': 21
+};
+const FALLBACK_TRANSPLANT_DAYS = 35;
+
+function getTransplantDays(dbPlant) {
+  if (!dbPlant.germination_days?.max) return FALLBACK_TRANSPLANT_DAYS;
+  const buffer = GROWTH_BUFFER_BY_TYPE[dbPlant.type] ?? 14;
+  return dbPlant.germination_days.max + buffer;
+}
+
 export const Predictions = {
   /** Given a user plant entry, compute key upcoming dates */
   compute(userPlant) {
@@ -27,7 +47,7 @@ export const Predictions = {
 
       // predict transplant if indoor sowing
       if (stageId === 'semis_interieur' && dbPlant.transplant) {
-        const transplantDays = 35; // ~5 weeks for most plants
+        const transplantDays = getTransplantDays(dbPlant);
         results.push({
           icon: '🌾',
           label: 'Repiquage en pleine terre',
@@ -39,7 +59,7 @@ export const Predictions = {
 
       // predict harvest
       if (dbPlant.harvest?.days_from_transplant) {
-        const harvestBase = stageId === 'semis_interieur' ? 35 : 0;
+        const harvestBase = stageId === 'semis_interieur' ? getTransplantDays(dbPlant) : 0;
         results.push({
           icon: '🧺',
           label: 'Récolte estimée',
