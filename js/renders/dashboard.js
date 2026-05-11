@@ -8,6 +8,7 @@ import { prefillForm } from './form.js';
 import { Weather } from '../weather.js';
 import { DiseaseRisks } from '../diseaseRisks.js';
 import { SunriseSunset } from '../sunriseSunset.js';
+import { Watering } from '../watering.js';
 
 export function renderDashboard() {
   // Greeting
@@ -81,6 +82,7 @@ export function renderDashboard() {
   });
 
   DiseaseRisks.renderDashboardSection();
+  Watering.renderDashboardSection();
   SunriseSunset.renderDashboardSection();
   Weather.renderDashboardSection();
 }

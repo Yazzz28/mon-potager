@@ -189,6 +189,14 @@
   to   { transform: translateY(0);    opacity: 1; }
 }
 
+/* ---- Sowing notes ---- */
+.sowing-note {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
 /* ---- Utilities ---- */
 .hidden      { display: none !important; }
 .text-center { text-align: center; }

@@ -1,4 +1,5 @@
 import { App } from './state.js';
+import { DB } from './db.js';
 
 const CACHE_KEY = 'monPotager_weather';
 const CACHE_TTL = 60 * 60 * 1000; // 1 heure
@@ -197,12 +198,41 @@ export const Weather = {
     const { days } = App.weather;
     const alerts = [];
 
+    const COLD_HARDY_IDS = [
+      'poireau', 'epinard', 'ail', 'oignon', 'echalote', 'chou', 'chou_fleur',
+      'chou_de_bruxelles', 'brocoli', 'navet', 'panais', 'mache', 'persil',
+      'ciboulette', 'thym', 'romarin', 'sauge', 'petit_pois', 'feve',
+    ];
+
     const frost = days.find(d => d.tempMin < 2);
     if (frost) {
+      const activePlants = App.plants.filter(p => p.currentStage !== 'termine');
+      const vulnerablePlants = activePlants.filter(p => !COLD_HARDY_IDS.includes(p.plantId));
+      const hardyPlants     = activePlants.filter(p =>  COLD_HARDY_IDS.includes(p.plantId));
+
+      let frostText;
+      if (activePlants.length === 0) {
+        frostText = `Minimum ${frost.tempMin}°C prévu. Protégez vos semis et jeunes plants sensibles !`;
+      } else if (vulnerablePlants.length > 0) {
+        const names = vulnerablePlants.map(p => {
+          const dbPlant = DB.getPlant(p.plantId);
+          const emoji = dbPlant?.emoji ?? '';
+          const name  = p.customName || dbPlant?.name || p.plantId;
+          return `${emoji} ${name}`.trim();
+        }).join(', ');
+        frostText = `Plantes sensibles au gel : ${names} — Protégez-les ou rentrez-les !`;
+      } else {
+        const hardyNames = hardyPlants.map(p => {
+          const dbPlant = DB.getPlant(p.plantId);
+          return p.customName || dbPlant?.name || p.plantId;
+        }).join(', ');
+        frostText = `Vos plantes actuelles (${hardyNames}) résistent bien au gel.`;
+      }
+
       alerts.push({
         type: 'danger', icon: '🧊',
         title: `Gel imminent — ${_fmtDate(frost.date)}`,
-        text:  `Minimum ${frost.tempMin}°C prévu. Protégez vos semis et jeunes plants sensibles !`,
+        text:  frostText,
       });
     }
 
