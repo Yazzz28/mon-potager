@@ -402,61 +402,40 @@
   .tr-side  { order: -1; }
   .tr-palette-list { max-height: 160px; }
   :root { --tr-cell-sz: 46px; }
+
+  /* Empêche le grid-item d'exploser sa colonne (min-width: auto par défaut dans CSS grid) */
+  .tr-grid-wrap { min-width: 0; }
 }
 
 @media (max-width: 600px) {
   :root { --tr-cell-sz: 38px; }
 
-  /* Navigation calendrier des cultures */
+  /* Les onglets scrollent horizontalement plutôt que de déborder la page */
+  .tr-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tr-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* Navigation mois : centrer sur deux lignes */
   .tr-tl-nav {
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  .tr-tl-nav .btn {
-    font-size: 11px;
-    padding: 4px 8px;
-  }
-
   .tr-tl-title {
     flex: 1 0 100%;
     text-align: center;
     font-size: 16px;
   }
 
-  /* Légende compacte */
-  .tr-tl-legend {
-    gap: 4px;
-  }
-
-  .tr-legend-chip {
-    font-size: 10px;
-    padding: 2px 6px;
-  }
-
-  /* Grille des plantes du mois */
+  /* Grille des plantes : une seule colonne */
   .tr-tl-plants {
     grid-template-columns: 1fr;
-  }
-
-  .tr-month-group {
-    padding: 8px 10px;
-  }
-
-  /* Tabs compacts */
-  .tr-tab {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-
-  /* Toolbar compacte */
-  .tr-toolbar {
-    gap: 6px;
-    padding: 8px 10px;
-  }
-
-  .tr-tool-group + .tr-tool-group {
-    padding-left: 6px;
   }
 }
