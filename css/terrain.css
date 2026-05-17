@@ -406,6 +406,57 @@
 
 @media (max-width: 600px) {
   :root { --tr-cell-sz: 38px; }
-  .tr-tl-nav { flex-wrap: wrap; justify-content: center; }
-  .tr-tl-title { flex: 1 0 100%; text-align: center; }
+
+  /* Navigation calendrier des cultures */
+  .tr-tl-nav {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tr-tl-nav .btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .tr-tl-title {
+    flex: 1 0 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Légende compacte */
+  .tr-tl-legend {
+    gap: 4px;
+  }
+
+  .tr-legend-chip {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  /* Grille des plantes du mois */
+  .tr-tl-plants {
+    grid-template-columns: 1fr;
+  }
+
+  .tr-month-group {
+    padding: 8px 10px;
+  }
+
+  /* Tabs compacts */
+  .tr-tab {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Toolbar compacte */
+  .tr-toolbar {
+    gap: 6px;
+    padding: 8px 10px;
+  }
+
+  .tr-tool-group + .tr-tool-group {
+    padding-left: 6px;
+  }
 }
